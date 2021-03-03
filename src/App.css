@@ -1,0 +1,14 @@
+.App {
+    text-align: center;
+    background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_oL_brF480UR3WZN9K7_hdhOdLsx9ZJrWXQ&usqp=CAU);
+    min-height: 100vh;
+    /* display: flex;
+    flex-direction: column; */
+    padding: 100px 40px;
+
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    
+  }
+  
