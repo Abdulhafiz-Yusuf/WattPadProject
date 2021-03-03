@@ -265,7 +265,7 @@ export default function PersistentDrawerLeft() {
                 </Drawer>
             </div>
 
-            {/*<Homepage />*/}
+            <Homepage />
             <Createbook />
         </>
 
