@@ -1,272 +1,143 @@
 import React, { useState } from 'react';
-import Homepage from './Home.js';
-import Createbook from './Create.js';
-import {
-    Drawer,
-    CssBaseline,
-    AppBar,
-    IconButton,
-    Avatar, Toolbar, List, Divider, ListItem, ListItemIcon, ListItemText, InputBase,
-} from '@material-ui/core';
-import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
-import clsx from 'clsx';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
+import Dialog from '@material-ui/core/Dialog';
+
+
+import IconButton from '@material-ui/core/IconButton';
+
+import CloseIcon from '@material-ui/icons/Close';
+import Slide from '@material-ui/core/Slide';
+import './Explore.css';
 // Images
-import wattpadlogo from '../assets/wattpadlogo.png';
-import { LibraryBooks, Menu, ChevronLeft, Home, ChatRounded, Search, Create, ChevronRight, AccountCircle } from '@material-ui/icons';
-
-const drawerWidth = 220;
-
+import logo from '../assets/bluelogo.png';
+//components
+import Homepage from '../components/Home';
+import Createbook from '../components/Create';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
 
+    navigationContainerimg: {
+        cursor: 'pointer',
     },
-    appBar: {
-        transition: theme.transitions.create(['margin', 'width'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-
-        }),
-    },
-    appBarShift: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: drawerWidth,
-        transition: theme.transitions.create(['margin', 'width'], {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    menuButton: {
-        marginRight: theme.spacing(3),
-    },
-    hide: {
-        display: 'none',
-    },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-
-
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    drawerHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        padding: theme.spacing(0, 1),
-        // necessary for content to be below app bar
-        ...theme.mixins.toolbar,
-        justifyContent: 'flex-end',
-    },
-
-    search: {
-
-        left: '690px',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
-        marginRight: theme.spacing(4),
-        marginLeft: 30,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
-            width: 'auto',
-        },
-    },
-    searchIcon: {
-        padding: theme.spacing(0, 2),
-        height: '100%',
+    menuItems: {
         position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        //right: "-45px",
-        top: "2px",
+        right: '4.7rem',
+        color: '#fff',
+        padding: "10px 10px"
     },
-    inputRoot: {
-        color: 'inherit',
-    },
-    inputInput: {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
-        },
-    },
-
-
-
-    expand: {
-        transform: 'rotate(0deg)',
-        marginLeft: 'auto',
-        transition: theme.transitions.create('transform', {
-            duration: theme.transitions.duration.shortest,
-        }),
-    },
-    expandOpen: {
-        transform: 'rotate(180deg)',
-    },
-
 
 
 
 }));
 
-export default function PersistentDrawerLeft() {
-    const classes = useStyles();
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
-    const theme = useTheme();
+export default function Explore() {
+    const classes = useStyles();
+    const [newbook, setNewBook] = useState(null);
+
+    const addBook = (data) => {
+        setNewBook(data);
+    }
+
     const [open, setOpen] = React.useState(false);
 
-
-
-
-
-
-    /* const [favorites, setFavorites] = useState({});*/
-
-
-    const handleDrawerOpen = () => {
+    const handleClickOpen = () => {
         setOpen(true);
     };
 
-    const handleDrawerClose = () => {
+    const handleClose = () => {
         setOpen(false);
     };
-
-
-
-    /*
-        const changeColor = (currentIndex) => {
-            // let tempBooks = [...books];
-    
-            // tempBooks.map((book, index) => index === currentIndex ? { ...book, isFavorite: !book.isFavorite } : book)
-    
-            // console.log(tempBooks);
-            setFavorites({
-                ...favorites,
-                [currentIndex]: !Boolean(favorites[currentIndex])
-            })
-        };*/
-    /* const [rating, setRating] = useState({});*/
-    /*
-    const changeRating = (currentIndex) => {
-        
-        setRating({
-            ...rating,
-            [currentIndex]: !Boolean(rating[currentIndex])
-        })
-    };*/
-
-
     return (
         <>
+            <AppBar style={{ height: "60px", width: "100%", backgroundColor: "#7986cb" }}>
+                <Toolbar>
+                    <Typography variant="title" color="inherit">
+                        {
 
-            <div className={classes.root}>
-                <CssBaseline />
-                <AppBar
-                    style={{ height: '70px', backgroundColor: "black", width: '100%', }}
-                    position="fixed"
-                    className={clsx(classes.appBar, {
-                        [classes.appBarShift]: open,
-                    })}
-                >
-                    <Toolbar>
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={handleDrawerOpen}
-                            edge="start"
-                            className={clsx(classes.menuButton, open && classes.hide)}
-                        >
-                            <Menu />
-                        </IconButton>
+                            <img className={classes.navigationContainerimg} style={{ height: '61px', width: '181px', marginLeft: '-24px' }} src={logo} alt="logo" />
 
-                        <img style={{ height: "70px", }} src={wattpadlogo} className="Login-logo" alt="logo" />
 
-                        <div className={classes.search}>
-                            <div className={classes.searchIcon}>
-                                <Search />
+                        }
+                    </Typography>
+                    <div className={classes.menuItems}>
+                        {
+
+                            <div style={{ alignItems: "right" }}>
+
+                                <Button color="inherit">About</Button>
+
+                                <Button color="inherit" variant="outlined" color="primary" onClick={handleClickOpen}>Create</Button>
+
+                                <Button color="inherit">Library</Button>
+
+                                <Button color="inherit">Updates</Button>
+
+                                <Button color="inherit">Login</Button>
+
                             </div>
-                            <InputBase
-                                placeholder="Search…"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput,
-                                }}
-                                inputProps={{ 'aria-label': 'search' }}
-                            />
 
-                        </div>
-
-                        <Avatar alt="Profile Picture" style={{ backgroundColor: "#f44336", color: "black", right: "-950px", }}  >S</Avatar>
-
-                    </Toolbar>
-
-
-                </AppBar>
-                <Drawer
-
-                    className={classes.drawer}
-                    variant="persistent"
-                    anchor="left"
-                    open={open}
-                    classes={{
-                        paper: classes.drawerPaper,
-                    }}
-                >
-
-                    <div style={{ height: '100%', backgroundColor: "#f44336", color: "black", }}>
-                        <div
-
-                            className={classes.drawerHeader}>
-                            <IconButton onClick={handleDrawerClose}>
-                                {theme.direction === 'ltr' ? <ChevronLeft /> : <ChevronRight />}
-                            </IconButton>
-                        </div>
-                        <Divider />
-                        <List >
-
-
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <Home />
-                                </ListItemIcon>
-                                <ListItemText primary="Home" />
-                            </ListItem>
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <LibraryBooks />
-                                </ListItemIcon>
-                                <ListItemText primary="Library" />
-                            </ListItem>
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <Create />
-                                </ListItemIcon>
-                                <ListItemText primary="Create" />
-                            </ListItem>
-                            <ListItem button>
-                                <ListItemIcon>
-                                    <ChatRounded />
-                                </ListItemIcon>
-                                <ListItemText primary="Update" />
-                            </ListItem>
-                        </List>
+                        }
                     </div>
-                </Drawer>
+                </Toolbar>
+            </AppBar>
+            <div class="container" style={{ height: "570px", }} >
+                <div id="slideshow">
+                    <div class="elemnt"><span></span></div>
+                    <div class="elemnt1"><span></span></div>
+                    <div class="elemnt2"><span></span></div>
+                    <div class="elemnt3"><span></span></div>
+                    <div class="elemnt4"><span></span></div>
+
+                    <div class="introduction">
+                        <div class="form">
+                            <h1>Wattpad</h1>
+                            <h2>Writing Patner</h2>
+                            <p>
+                                Where stories come to life
+                              </p>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
             </div>
 
-            <Homepage />
-            <Createbook />
+            <br />
+            <br />
+            <Homepage newbook={newbook} />
+            <br />
+            <br />
+            <br />
+            <br />
+            <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} style={{ overflow: "hidden" }}>
+
+                <Toolbar style={{ backgroundColor: "rgb(130, 95, 228)", marginBottom: "-30px" }}>
+                    <IconButton edge="start" color="black" onClick={handleClose} aria-label="close">
+                        <CloseIcon />
+                    </IconButton>
+
+
+                </Toolbar>
+                <Createbook addBook={addBook} style={{ overflow: "hidden" }} />
+
+
+
+            </Dialog>
+
+
+
         </>
 
     );

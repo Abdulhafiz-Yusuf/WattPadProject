@@ -1,14 +1,22 @@
 .App {
     text-align: center;
-    background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_oL_brF480UR3WZN9K7_hdhOdLsx9ZJrWXQ&usqp=CAU);
+    background-color: rgb(180, 130, 228);
     min-height: 100vh;
-    /* display: flex;
-    flex-direction: column; */
-    padding: 100px 40px;
-
+    
+    
+     overflow-x: hidden;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     
   }
   
+.upload-file img + div {
+  display: block !important;
+  position: relative;
+  left: 36px;
+}
+
+.upload-file img + div span {
+  width: 100%;
+}

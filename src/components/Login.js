@@ -1,5 +1,5 @@
 
-import wattpadlogo from '../assets/wattpadlogo.png';
+import wattpadlogo from '../assets/bluelogo.png';
 import './Login.css';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
