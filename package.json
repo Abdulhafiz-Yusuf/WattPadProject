@@ -1,47 +1,29 @@
 {
-  "name": "implement",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@daym3l/react-profile-image": "^1.3.2",
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.57",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.7.3",
-    "axios": "^0.21.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-html-parser": "^2.0.2",
-    "react-quill": "^1.3.5",
-    "react-scripts": "4.0.3",
-    "react-typing-effect": "^2.0.5",
-    "rich-markdown-editor": "^11.4.0-0",
-    "web-vitals": "^1.1.0"
-  },
+  "name": "deploying-fullstack-with-heroku-sample",
+  "version": "1.0.0",
+  "description": "back-end for the front-end to be used as an example for how to deploy a fullstack app using Heroku.",
+  "main": "app.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ui": "rm -rf build && cd ./client && npm run build --prod && cp -r build ../",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "pg": "^8.5.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.6",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5"
   }
 }
