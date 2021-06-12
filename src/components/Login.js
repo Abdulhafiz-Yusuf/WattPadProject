@@ -7,40 +7,27 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import EmailIcon from '@material-ui/icons/Email';
 import React, { useState } from "react";
 
-
-
 function Login() {
     // // Intialize username with setState
     const [username, setUsername] = useState('');
 
     const onChangeUsername = (e) => {
-
         setUsername(e.target.value);
         // console.log("USERNAME", username);
     }
     // Create onChangeUsername function
     // set username state with setUsername fuction which declares above
-
     // Same for Password field
     // Intialize password with setState
     const [password, setpassword] = useState('');
 
     const onChangepassword = (e) => {
-
-
         setpassword(e.target.value);
-
     }
-
-
 
     const onSubmit = () => {
-
-
-        console.log("YOU USERNAME AND PASSWORD", username, password)
+        console.log("YOUR USERNAME AND PASSWORD", username, password)
     }
-
-
     // Create onSubmit function which you console [console.log(username, password)]
     return (
         <div className="Login">
