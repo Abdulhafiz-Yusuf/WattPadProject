@@ -16,8 +16,8 @@ import './Explore.css';
 // Images
 import logo from '../assets/bluelogo.png';
 //components
-import Homepage from '../components/Home';
-import Createbook from '../components/Create';
+import Homepage from './Home';
+import Createbook from './Create';
 
 const useStyles = makeStyles((theme) => ({
 
